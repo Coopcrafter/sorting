@@ -120,6 +120,7 @@ function sort(array)
 }
 
 module.exports.sort = (req, res) => {
+    console.log(req.params.body)
     Review.find().then((reviews) => {
         if(req.params.sort === 'ascending')
         {

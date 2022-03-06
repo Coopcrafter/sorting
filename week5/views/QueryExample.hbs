@@ -32,7 +32,7 @@
     <br>
     Review <input type="text" name="reviewText">
     <br>
-    <button>Make Request</button>
+    <button id="grab">Make Request</button>
     <hr>
     <h2>Results</h2>
     <input type="text" name="query" readonly size="70">
@@ -54,7 +54,7 @@
     <br>
     <button type="button" id="SortButton">Sort</button>
     <script>
-        var callBtn = document.querySelector('button')
+        var callBtn = document.querySelector('#grab')
         callBtn.addEventListener('click', makeCall)
 
         var sortBtn = document.querySelector('#SortButton')
@@ -74,7 +74,7 @@
             var results = document.querySelector('textarea[name="results"]')
             var sortBy = document.querySelector('input[name="sortText"]').value
             var orderLOL = document.querySelector('input[name=way]').value
-            var url = `http://localhost:3000/api/v1/reviews?${sortBy}=${orderLOL}`
+            var url = `http://localhost:3000/api/v1/reviews/${sortBy}=${orderLOL}`
 
             document.querySelector('input[name="query"]').value = url
 
@@ -103,6 +103,7 @@
                 throw new TypeError("This is not JSON")
             }).then(function(jsonText){
                 results.value = jsonText
+                console.log(jsonText)
             }).catch(function(err){
                 console.log(err)
             })

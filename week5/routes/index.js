@@ -9,7 +9,7 @@ router.post('/reviews', ctrlReviews.reviewCreate)
 router.put('/reviews/:reviewid', ctrlReviews.reviewUpdateOne)
 router.delete('/reviews/:reviewid', ctrlReviews.reviewDeleteOne)
 //router.get('/reviews?:column=:value', ctrlReviews.sort)
-router.get('/reviews/:column=:value', (req, res) => {
+router.get('/reviews?:column=:value', (req, res) => {
   console.log(req.params.body)
     Review.find().then((reviews) => {
         if(req.params.sort === 'ascending')

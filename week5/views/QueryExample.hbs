@@ -69,7 +69,7 @@
             var rescource = document.querySelector('input[name="resource"]').value
             var results = document.querySelector('textarea[name="results"]')
             var sortBy = document.querySelector('input[name="sortText"]').value
-            var url = `http://localhost:3000/api/v1/reviews?{sortBy}={ascending}`
+            var url = `http://localhost:3000/api/v1/reviews?{rating}={ascending}`
 
             document.querySelector('input[name="query"]').value = url
 

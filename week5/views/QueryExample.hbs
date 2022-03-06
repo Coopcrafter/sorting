@@ -32,8 +32,6 @@
     <br>
     Review <input type="text" name="reviewText">
     <br>
-    Sort <input type="text" name="sortText">
-    <br>
     <button>Make Request</button>
     <hr>
     <h2>Results</h2>
@@ -48,6 +46,12 @@
         <option value="4"></option>
         <option value="5"></option>
     </datalist>
+    <br>
+    <br>
+    What to Sort         <input type="text" name="sortText">
+    <br>
+    Ascending or Descending <input type="text" name="way">
+    <br>
     <button type="button" id="SortButton">Sort</button>
     <script>
         var callBtn = document.querySelector('button')
@@ -69,7 +73,8 @@
             var rescource = document.querySelector('input[name="resource"]').value
             var results = document.querySelector('textarea[name="results"]')
             var sortBy = document.querySelector('input[name="sortText"]').value
-            var url = `http://localhost:3000/api/v1/reviews?{rating}={ascending}`
+            var orderLOL = document.querySelector('input[name=way]').value
+            var url = `http://localhost:3000/api/v1/reviews?${sortBy}=${orderLOL}`
 
             document.querySelector('input[name="query"]').value = url
 

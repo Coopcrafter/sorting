@@ -99,6 +99,7 @@ module.exports.reviewDeleteOne = function(req, res){
 }
 
 module.exports.sortReviewsAll = function(req, res) {
+    console.log("reached")
     Review.find().exec().then(function(results){
         array = Array()
         array = sort(results)
@@ -110,22 +111,26 @@ module.exports.sortReviewsAll = function(req, res) {
 
 function sort(array)
 {
+    console.log("reached sort")
     data = Array()
     foreach(i in array)
     {
         data[i] = array[i] > array[i+1]
+        console.log(data[i])
     }
     console.log("Sorting...")
     return data
 }
 
 module.exports.sort = (req, res) => {
-    console.log(req.params.body)
+    console.log(req.query.column)
+    console.log(req.query.sort)
+    console.log("Reached module.exports.sort")
     Review.find().then((reviews) => {
-        if(req.params.sort === 'ascending')
+        if(req.query.sort === 'ascending')
         {
             //sort employees by column in query
-            switch (req.params.column) {
+            switch (req.query.column) {
                 case column = "author":
                     reviews.sort(function(a, b) {
                         return a.author.localeCompare(b.author)
@@ -138,7 +143,24 @@ module.exports.sort = (req, res) => {
                     break;
             }
         }
+        if(req.query.sort === 'descending')
+        {
+            //sort employees by column in query
+            switch (req.query.column) {
+                case column = "author":
+                    reviews.sort(function(a, b) {
+                        return b.author.localeCompare(a.author)
+                    });
+                    break;
+                case column = "rating":
+                    reviews.sort(function(a, b) {
+                        return b.rating < a.rating
+                    });
+                    break;
+            }
+        }
+
         res.json({reviews})
-        debug.log("Finished Sorting...")
+        console.log("Finished Sorting...")
     })
 }

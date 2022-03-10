@@ -72,9 +72,10 @@
             var verb = verbfield.options[verbfield.selectedIndex].value
             var rescource = document.querySelector('input[name="resource"]').value
             var results = document.querySelector('textarea[name="results"]')
+            
             var sortBy = document.querySelector('input[name="sortText"]').value
-            var orderLOL = document.querySelector('input[name=way]').value
-            var url = `http://localhost:3000/api/v1/reviews?${sortBy}=${orderLOL}`
+            var orderLOL = document.querySelector('input[name=way]').value      
+            var url = `http://localhost:3000/api/v1/reviewsSort?column=${sortBy}&sort=${orderLOL}`
 
             document.querySelector('input[name="query"]').value = url
 

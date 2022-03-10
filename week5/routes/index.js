@@ -8,7 +8,12 @@ router.get('/reviews/:reviewid', ctrlReviews.reviewsReadOne)
 router.post('/reviews', ctrlReviews.reviewCreate)
 router.put('/reviews/:reviewid', ctrlReviews.reviewUpdateOne)
 router.delete('/reviews/:reviewid', ctrlReviews.reviewDeleteOne)
-//router.get('/reviews?:column=:value', ctrlReviews.sort)
+router.get('/reviewsSort', ctrlReviews.sort)
+/*
+router.get('/reviews?author=ascending', (req, res) => {
+    console.log("WE MADE IT")
+})
+/*
 router.get('/reviews?:column=:value', (req, res) => {
   console.log(req.params.body)
     Review.find().then((reviews) => {
@@ -32,7 +37,7 @@ router.get('/reviews?:column=:value', (req, res) => {
         debug.log("Finished Sorting...")
     })
 })
-
+*/
 router.get('/QueryExample', ctrlReviews.queryPage)
 
 /* GET home page. */
